@@ -19,7 +19,8 @@ model = keras.Model(inputs=inputs, outputs=outputs)
 
 early_stop_cb = keras.callbacks.EarlyStopping(monitor='mean_squared_error', min_delta=0, patience=5, verbose=1, mode='auto')
 
-# Reduce the learning rate when the loss kind of plateaus.
+# Reduce the learning rate when the loss kind of plateaus. factor here does lr = lr * factor.
+# This is different from the other one which does lr = lr - (lr * factor).
 reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='mean_squared_error', factor=0.05, patience=2, verbose=1, min_delta=10, mode='min')
 
 log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -33,13 +34,15 @@ model.compile(optimizer=keras.optimizers.legacy.Adam(learning_rate=0.1), loss='m
                        ])
 
 # Uses 20% of the data for validation.
-history = model.fit(data, labels, batch_size=32, epochs=10, validation_split=0.2, callbacks=[early_stop_cb, reduce_lr])
+history = model.fit(data, labels, batch_size=32, epochs=10, validation_split=0.2, callbacks=[early_stop_cb, reduce_lr, tensorboard_callback])
+
+print(model.summary())
 
 
-figure, axis = plt.subplots()
-axis.plot(history.history['mean_squared_error'])
-axis.plot(history.history['val_mean_squared_error'])
-axis.set_ylabel('MSE')
-axis.set_xlabel('Epoch')
-axis.legend(['Train', 'Validation'], loc='upper right')
-plt.show()
+# figure, axis = plt.subplots()
+# axis.plot(history.history['mean_squared_error'])
+# axis.plot(history.history['val_mean_squared_error'])
+# axis.set_ylabel('MSE')
+# axis.set_xlabel('Epoch')
+# axis.legend(['Train', 'Validation'], loc='upper right')
+# plt.show()pip install tensorboard
