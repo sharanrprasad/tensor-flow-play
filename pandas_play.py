@@ -75,7 +75,7 @@ pdNpSeries = pd.Series(npArray, ['a', 'b'])
 
 # Conditionals to filter certain rows and columns in a Data frame
 
-# Using conditonal
+# Using conditional
 pdDataFrame = pd.DataFrame({
     'a': [1, 2, 3],
     'b': [True, False, False],

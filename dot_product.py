@@ -19,6 +19,10 @@
 # One important point about matrix multiplication is that the dot product of two vectors is also equal to the
 # transpose of one vector multiplied by the other
 
+# GPUs (and also CPUs to a some extent) are excellent at calculating dot products.  If we don't use numpy functions
+# to calculate dot products or matmul but instead use for loops it is about 300 times slower.
+# Numpy functions use SIMD to parallelize operations and that makes it a lot faster.
+
 import numpy as np
 
 

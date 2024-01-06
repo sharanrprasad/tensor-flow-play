@@ -43,3 +43,4 @@ test = np.array([[2, 1, -1], [0, 1, 1]])
 mask = test > 0
 
 print(np.sum(test * mask, axis=1))  # Sum is calculated for all values. All negative numbers before are zero now.
+
