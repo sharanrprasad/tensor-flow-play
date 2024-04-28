@@ -46,7 +46,7 @@ print("Number of axes:", rank_4_tensor.ndim)
 print("Shape of tensor:", rank_4_tensor.shape)
 print("Elements along axis 0 of tensor:", rank_4_tensor.shape[0])
 print("Elements along the last axis of tensor:", rank_4_tensor.shape[-1])
-print("Total number of elements (3*2*4*5): ", tf.size(rank_4_tensor).numpy())
+print("Total number of elements (1*2*2*2): ", tf.size(rank_4_tensor).numpy())
 
 # Vector normalization - Note we are only talking about vectors which have only one row.
 # That is why axis parameter needs to be given for normalization functions. There are different kinds of normalization
