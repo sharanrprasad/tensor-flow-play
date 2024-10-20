@@ -37,3 +37,6 @@ print(np.sum(matrix, axis=-1))
 # Arg max
 print(np.argmax(matrix, axis=2))
 
+
+# Think of it like this - What ever axis we specify that will be collapsed.
+# If we say axis is zero for a shape (2,3,10) then it will turn to (3,10)
